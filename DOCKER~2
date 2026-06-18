@@ -1,0 +1,8 @@
+**/node_modules
+**/.env
+**/.env.*
+**/*.log
+**/*.bak
+platform/data/social-scheduler/uploads
+platform/data/approved
+platform/data/*-cache

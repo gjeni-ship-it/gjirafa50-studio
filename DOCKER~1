@@ -1,0 +1,14 @@
+# Playwright base ships Chromium + system deps (Product Studio render). Match creative-engine playwright version.
+FROM mcr.microsoft.com/playwright:v1.60.0-jammy
+WORKDIR /app
+COPY creative-engine/package*.json ./creative-engine/
+RUN cd creative-engine && npm install --omit=dev
+COPY platform/package*.json ./platform/
+RUN cd platform && npm install --omit=dev
+COPY creative-engine ./creative-engine
+COPY platform ./platform
+ENV NODE_ENV=production
+ENV PORT=3000
+EXPOSE 3000
+WORKDIR /app/platform
+CMD ["node", "server.js"]
