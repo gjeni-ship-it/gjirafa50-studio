@@ -1,0 +1,15 @@
+{
+  "name": "Gjirafa50",
+  "url": "gjirafa50.com",
+  "cta_text": "Bli tani",
+
+  "_palette_note": "PLACEHOLDER colors — replace with the official Gjirafa50 brand palette.",
+  "accent": "#E4002B",
+  "accentInk": "#FFFFFF",
+  "bg1": "#0E1726",
+  "bg2": "#1B2C4A",
+
+  "_logo_note": "To use the real logo, either set 'logo' to a path/data-URI of an SVG/PNG, or paste the SVG markup into 'logoSvg'. If both are empty the engine draws a placeholder wordmark.",
+  "logo": "",
+  "logoSvg": ""
+}

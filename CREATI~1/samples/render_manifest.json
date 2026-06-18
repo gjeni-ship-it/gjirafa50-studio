@@ -1,0 +1,23 @@
+[
+  {
+    "product_id": "sample",
+    "product": "Telefon Samsung Galaxy A55 5G, 256GB",
+    "format": "feed",
+    "file": "sample_feed.png",
+    "image_status": "ok"
+  },
+  {
+    "product_id": "sample",
+    "product": "Telefon Samsung Galaxy A55 5G, 256GB",
+    "format": "story",
+    "file": "sample_story.png",
+    "image_status": "ok"
+  },
+  {
+    "product_id": "sample",
+    "product": "Telefon Samsung Galaxy A55 5G, 256GB",
+    "format": "reel",
+    "file": "sample_reel.png",
+    "image_status": "ok"
+  }
+]

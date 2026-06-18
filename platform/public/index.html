@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gjirafa50 — Product Browser</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Gjirafa<span>50</span> · Product Studio</div>
+  <a href="/social-scheduler" class="ghost" style="text-decoration:none;padding:8px 12px;border:1px solid #2b343f;border-radius:8px;color:inherit">Social Scheduler →</a>
+  <div class="modepill" id="modepill">…</div>
+  <button class="ghost" id="historyBtn">Historiku</button>
+  <button class="ghost" id="settingsBtn" title="Cilësimet e imazhit">⚙ Imazhi</button>
+</header>
+
+<section class="controls">
+  <input id="search" type="search" placeholder="Kërko produkte…" autocomplete="off">
+  <select id="category"><option value="">Të gjitha kategoritë</option></select>
+  <select id="sort">
+    <option value="discount">Zbritja më e madhe</option>
+    <option value="newest">Më të rejat</option>
+    <option value="price_asc">Çmimi: ulët → lartë</option>
+    <option value="price_desc">Çmimi: lartë → ulët</option>
+    <option value="name">Emri (A–Z)</option>
+  </select>
+  <label class="chk"><input type="checkbox" id="onSale"> Vetëm me zbritje</label>
+  <label class="chk"><input type="checkbox" id="inStock" checked> Vetëm në stok</label>
+</section>
+
+<div id="settings" class="settings hidden">
+  <label>Modeli i URL-së së imazhit
+    <input id="imgPattern" type="text" spellcheck="false">
+  </label>
+  <small>Vendose modelin real të CDN-së. Placeholders: <code>{guid}</code> dhe <code>{ext}</code>. Ndryshimet ruhen lokalisht.</small>
+  <label class="chk" style="color:#15202b"><input type="checkbox" id="cutSetting" checked> Përdor cutout AI (Gemini) për produktin</label>
+  <div><button id="savePattern">Ruaj</button> <button class="ghost" id="resetPattern">Rikthe</button></div>
+</div>
+
+<div class="meta" id="resultMeta"></div>
+<main id="grid" class="grid"></main>
+<div class="pager">
+  <button id="prev" class="ghost">← Mëparshme</button>
+  <span id="pageInfo"></span>
+  <button id="next" class="ghost">Tjetra →</button>
+</div>
+
+<!-- Generate modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="modalClose">×</button>
+    <div class="modal-body">
+      <div class="detail">
+        <img id="dImg" class="detail-img" alt="">
+        <h2 id="dName"></h2>
+        <div class="detail-meta" id="dMeta"></div>
+        <a id="dUrl" class="detail-url" target="_blank" rel="noopener">Shiko në faqe →</a>
+      </div>
+      <div class="gen">
+        <div class="formats" id="formats">
+          <button data-fmt="feed" class="fmt active">Feed 1080×1080</button>
+          <button data-fmt="story" class="fmt">Story 1080×1920</button>
+          <button data-fmt="reel" class="fmt">Reel 1080×1920</button>
+        </div>
+        <div class="bgtools">
+          <input id="bgPrompt" type="text" placeholder="Përshkrim sfondi (opsional)…">
+          <button id="bgGen">✨ Sfond AI</button>
+          <button id="bgClear" class="ghost">Hiq sfondin</button>
+        </div>
+        <div class="bgtools">
+          <button id="cutGen">✂️ Pastro sfondin (AI)</button>
+          <label class="chk2" title="Para = foto origjinale · Pas = cutout"><input type="checkbox" id="cutToggle"> Pas (cutout)</label>
+          <span id="cutStatus" class="cutstatus"></span>
+        </div>
+        <div class="preview-wrap"><div id="previewScale"><div id="creative"></div></div></div>
+        <div class="copy">
+          <label>Headline <input id="cHeadline" type="text"></label>
+          <label>CTA <input id="cCta" type="text"></label>
+          <label>Facebook caption <textarea id="cFb" rows="3"></textarea></label>
+          <label>Instagram caption <textarea id="cIg" rows="3"></textarea></label>
+          <label>Meta description <textarea id="cMeta" rows="2"></textarea></label>
+          <div class="actions">
+            <button id="regen" class="ghost">↻ Template</button>
+            <button id="aicopy" class="ghost">✨ AI tekst</button>
+            <button id="approve">✓ Aprovo postimin</button>
+            <button id="publish" disabled title="I çaktivizuar — publikimi nuk është aktiv">Publiko (i çaktivizuar)</button>
+          </div>
+          <small class="note">Rishiko gjithçka, pastaj Aprovo. Aprovimi ruan paketën + kreativet lokalisht. Asgjë nuk publikohet.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Approval history -->
+<div id="history" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="historyClose">×</button>
+    <div class="hist-wrap">
+      <h2 class="hist-title">Historiku i aprovimeve</h2>
+      <div id="historyList" class="hist-list"></div>
+      <div id="historyDetail" class="hist-detail hidden"></div>
+    </div>
+  </div>
+</div>
+<!-- Dry-run payload viewer -->
+<div id="dry" class="modal hidden">
+  <div class="modal-card">
+    <button class="close" id="dryClose">×</button>
+    <div style="padding:22px">
+      <h2 style="margin:0 0 4px">Dry-run — Meta Graph API</h2>
+      <p class="note" style="margin:0 0 12px">Asgjë nuk dërgohet te Meta. Kjo është vetëm pamja e kërkesave që DO të dërgoheshin.</p>
+      <pre id="dryOut"></pre>
+    </div>
+  </div>
+</div>
+<!-- Confirm publish -->
+<div id="confirm" class="modal hidden">
+  <div class="modal-card" style="max-width:520px">
+    <button class="close" id="confirmClose">×</button>
+    <div style="padding:22px">
+      <h2 style="margin:0 0 8px">Konfirmo publikimin LIVE</h2>
+      <p id="confirmBody" class="note" style="font-size:14px;color:var(--ink)"></p>
+      <div class="actions"><button id="confirmYes">Po, publiko</button><button class="ghost" id="confirmNo">Anulo</button></div>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "brand": {
+    "name": "Gjirafa50",
+    "url": "gjirafa50.com",
+    "cta_text": "Bli tani",
+    "accent": "#E4002B",
+    "accentInk": "#FFFFFF",
+    "bg1": "#0E1726",
+    "bg2": "#1B2C4A",
+    "logo": "",
+    "logoSvg": ""
+  },
+  "formats": [
+    "feed",
+    "story",
+    "reel"
+  ],
+  "products": [
+    {
+      "id": 256383,
+      "slot": "Product of the Day",
+      "category": "Aksesorë",
+      "product_name": "Bateri Philips AA LR6, alkaline, paketim 10 copë",
+      "regular_price": "16.50€",
+      "sale_price": "2.00€",
+      "discount_percentage": "-88%",
+      "product_image": "../data/sample-product.svg",
+      "product_url": "https://gjirafa50.com/bateri-philips-aa-lr6-alkaline-paketim-10-cope"
+    },
+    {
+      "id": 296457,
+      "slot": "Happy Hour 1",
+      "category": "Pjesë për kompjuter",
+      "product_name": "Memorie RAM MicroMemory MMD2605/8GB, 8GB DDR3, 1600MHz PC3-12800",
+      "regular_price": "78.50€",
+      "sale_price": "7.00€",
+      "discount_percentage": "-91%",
+      "product_image": "../data/sample-product.svg",
+      "product_url": "https://gjirafa50.com/memorie-ram-micromemory-mmd26058gb-8gb-ddr3-1600mhz-pc3-12800"
+    },
+    {
+      "id": 268184,
+      "slot": "Happy Hour 2",
+      "category": "Pjesë për kompjuter",
+      "product_name": "Kuti eksternale Hikvision MDS1, për M.2 SATA NVMe, për kamera rrjeti, gri",
+      "regular_price": "44.50€",
+      "sale_price": "4.00€",
+      "discount_percentage": "-91%",
+      "product_image": "../data/sample-product.svg",
+      "product_url": "https://gjirafa50.com/kuti-eksternale-hikvision-mds1-per-m2-sata-nvme-per-kamera-rrjeti-gri"
+    },
+    {
+      "id": 274542,
+      "slot": "Happy Hour 3",
+      "category": "Pjesë për kompjuter",
+      "product_name": "Vegël zhveshëse kabllosh Equip 129411, funksion prerës, mekanizëm ratchet",
+      "regular_price": "66.50€",
+      "sale_price": "8.00€",
+      "discount_percentage": "-88%",
+      "product_image": "../data/sample-product.svg",
+      "product_url": "https://gjirafa50.com/vegel-zhveshese-kabllosh-equip-129411-funksion-preres-mekanizem-ratchet"
+    },
+    {
+      "id": 282846,
+      "slot": "Happy Hour 4",
+      "category": "Kompjuter, Laptop & Monitor",
+      "product_name": "Kabinet muror rack Eprado 19\", 6U, metalik, gri",
+      "regular_price": "115.50€",
+      "sale_price": "14.00€",
+      "discount_percentage": "-88%",
+      "product_image": "../data/sample-product.svg",
+      "product_url": "https://gjirafa50.com/kabinet-muror-rack-eprado-19-6u-metalik-gri"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<title>Gjirafa50 Creative</title>
+<style>
+  /* Brand-faithful PRODUCT-DEAL template with BIG BRAND + MODEL typography.
+     Hero = small brand eyebrow + huge condensed MODEL name (like the reference
+     ads: "M35", "LOQ", "Odyssey G5"). Themes recolor the scene (studio / dark /
+     neon / warm / fashion). Product photo, price, CTA, wordmark = always CSS. */
+  html,body{margin:0;padding:0;background:#888}
+  *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+  :root{--accent:#E4002B;--ink:#15202b;--muted:#7c8694;--bg:#f4f3f1;
+    --cond:"Oswald","Arial Narrow Bold","Arial Narrow",Impact,"Helvetica Neue",sans-serif}
+  #canvas{position:relative;overflow:hidden;color:var(--ink);background:var(--bg);
+    font-family:Inter,"Helvetica Neue",Arial,sans-serif}
+  #canvas.feed{width:1080px;height:1080px}
+  #canvas.story,#canvas.reel{width:1080px;height:1920px}
+
+  /* themes */
+  .theme-dark{--bg:#0b1220;--ink:#ffffff;--muted:#aab3c0}
+  .theme-neon{--bg:#120a1f;--ink:#ffffff;--muted:#cbb0e6;--accent:#e23ad6}
+  .theme-warm{--bg:#efe7dd;--ink:#2a2117;--muted:#8a7c6a}
+  .theme-fashion{--bg:#f3eef0;--ink:#241a22;--muted:#9a8a93}
+
+  .bg2{position:absolute;inset:0;background:radial-gradient(58% 50% at 76% 40%, rgba(0,0,0,.05), transparent 70%)}
+  .theme-dark .bg2{background:radial-gradient(60% 52% at 74% 40%, rgba(90,130,230,.22), transparent 72%)}
+  .theme-neon .bg2{background:radial-gradient(56% 48% at 74% 42%, rgba(200,70,235,.30), transparent 74%)}
+  .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .bgscrim{position:absolute;inset:0;background:linear-gradient(90deg, rgba(244,243,241,.94) 0%, rgba(244,243,241,.5) 42%, rgba(244,243,241,0) 66%), linear-gradient(to top, rgba(244,243,241,.92) 0%, rgba(244,243,241,0) 34%)}
+  .theme-dark .bgscrim,.theme-neon .bgscrim{background:linear-gradient(90deg, rgba(7,11,22,.92) 0%, rgba(7,11,22,.45) 44%, rgba(7,11,22,0) 68%), linear-gradient(to top, rgba(7,11,22,.9) 0%, rgba(7,11,22,0) 36%)}
+
+  .topbar{position:absolute;left:0;right:0;display:flex;align-items:flex-start;justify-content:space-between}
+  .label{font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);display:inline-flex;align-items:center;gap:14px;opacity:.92}
+  .label .sq{width:46px;height:14px;border-radius:4px;background:var(--accent)}
+  .wordmark{font-weight:800;color:var(--ink)}.wordmark .a{color:var(--accent)}
+
+  /* HERO big brand + model */
+  .hero{position:absolute;display:flex;flex-direction:column}
+  .eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.22em;color:var(--accent)}
+  .model{font-family:var(--cond);font-weight:700;text-transform:uppercase;line-height:.86;
+    letter-spacing:-.005em;color:var(--ink);display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+
+  .photo{position:absolute;display:flex;align-items:center;justify-content:center}
+  .photo img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 26px 40px rgba(20,30,45,.22))}
+  .theme-dark .photo img,.theme-neon .photo img{filter:drop-shadow(0 0 70px rgba(140,170,255,.22)) drop-shadow(0 26px 44px rgba(0,0,0,.55))}
+  .theme-neon .photo img{filter:drop-shadow(0 0 80px rgba(226,58,214,.30)) drop-shadow(0 26px 44px rgba(0,0,0,.55))}
+  .photo .noimg{color:#9aa3ac;font-weight:600}
+
+  .info{position:absolute;display:flex;flex-direction:column}
+  .sub{color:var(--muted);font-weight:500}
+  .priceline{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .old{color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:.09em}
+  .pill{display:inline-flex;align-items:center;background:var(--accent);color:#fff;font-weight:900;border-radius:7px;letter-spacing:.01em}
+  .sale{font-weight:900;color:var(--ink);letter-spacing:-.01em}
+  .cta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;
+    font-weight:800;text-transform:uppercase;letter-spacing:.02em;align-self:flex-start}
+
+  /* ---------- FEED 1080x1080 ---------- */
+  #canvas.feed .topbar{top:62px;left:70px;right:70px}
+  #canvas.feed .label{font-size:28px}
+  #canvas.feed .wordmark{font-size:38px}
+  #canvas.feed .hero{left:70px;top:150px;width:600px}
+  #canvas.feed .eyebrow{font-size:34px;margin-bottom:10px}
+  #canvas.feed .model{font-size:148px;-webkit-line-clamp:2}
+  #canvas.feed .photo{right:34px;top:352px;width:540px;height:540px}
+  #canvas.feed .info{left:70px;bottom:78px;width:560px}
+  #canvas.feed .sub{font-size:28px;margin-bottom:18px}
+  #canvas.feed .old{font-size:40px}
+  #canvas.feed .pill{font-size:30px;padding:6px 16px}
+  #canvas.feed .sale{font-size:104px;margin-top:4px}
+  #canvas.feed .cta{font-size:34px;padding:22px 44px;border-radius:8px;margin-top:26px}
+
+  /* ---------- STORY / REEL 1080x1920 ---------- */
+  #canvas.story .topbar,#canvas.reel .topbar{top:96px;left:84px;right:84px}
+  #canvas.story .label,#canvas.reel .label{font-size:32px}
+  #canvas.story .wordmark,#canvas.reel .wordmark{font-size:44px}
+  #canvas.story .hero,#canvas.reel .hero{left:84px;top:240px;width:760px}
+  #canvas.story .eyebrow,#canvas.reel .eyebrow{font-size:44px;margin-bottom:14px}
+  #canvas.story .model,#canvas.reel .model{font-size:200px;-webkit-line-clamp:2}
+  #canvas.story .photo,#canvas.reel .photo{left:140px;right:140px;top:720px;height:640px}
+  #canvas.story .info,#canvas.reel .info{left:84px;right:84px;bottom:170px}
+  #canvas.story .sub,#canvas.reel .sub{font-size:34px;margin-bottom:22px}
+  #canvas.story .old,#canvas.reel .old{font-size:50px}
+  #canvas.story .pill,#canvas.reel .pill{font-size:38px;padding:8px 20px}
+  #canvas.story .sale,#canvas.reel .sale{font-size:140px;margin-top:6px}
+  #canvas.story .cta,#canvas.reel .cta{font-size:46px;padding:30px 62px;border-radius:10px;margin-top:36px}
+  #canvas.reel .info{bottom:340px}            /* keep bottom clear for Reels UI */
+</style>
+</head>
+<body>
+<div id="canvas" class="feed"></div>
+<script>
+/* window.renderCreative(format, product, brand) — called by render.js via page.evaluate().
+   Open creative.html?demo&format=story&theme=dark for a preview. */
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function splitPrice(p){const s=String(p==null?"":p).trim();const m=s.match(/([\d.,]+)/);const n=m?m[1]:s;return {num:n,cur:(s.replace(n,"").trim()||"€")};}
+
+/* derive a punchy BRAND eyebrow + MODEL hero from the full product name */
+var KNOWN_BRANDS=["Samsung","Apple","iPhone","Lenovo","Gigabyte","MSI","Asus","Acer","Dell","HP","Xiaomi","Redmi","Poco","Huawei","Honor","Sony","LG","JBL","Logitech","Razer","Kodak","Nokia","Motorola","Realme","OnePlus","Oppo","Vivo","Nivea","Lattafa","Armaf","Canon","Nikon","GoPro","Bosch","Philips","Tefal","Beko","Tesla","Anker","Sandisk","Kingston","Corsair","TP-Link","Garmin","Fitbit","Sense7","Nintendo","Microsoft","Google","Pixel","Toshiba","Panasonic","Electrolux","Whirlpool","Braun"];
+var GENERIC=/^(monitor|laptop|notebook|smartphone|tablet|televizor|tv|kufje|kufjet|mouse|tastier[aë]|tastiera|parfum|edp|edt|edc|eau|de|parfume|toilette|karrige|tavolin[eë]|sahat|or[eë]|sa?at|smartwatch|fotoaparat|kamer[aë]|printer|frigorifer|makin[eë]|aspirator|set|paket[aë]|i|e|t[eë]|me|p[eë]r|gaming|wireless|bluetooth|portativ|smart|inch|inç|cm|mm|ml|gb|tb)$/i;
+function deriveBrandModel(name, explicitBrand, explicitModel){
+  var raw=String(name||"").trim();
+  if(explicitBrand||explicitModel){
+    return {brand:(explicitBrand||"").toUpperCase(), model:(explicitModel||raw)};
+  }
+  if(!raw) return {brand:"", model:""};
+  var tokens=raw.split(/\s+/);
+  var brand="", bi=-1;
+  for(var i=0;i<tokens.length;i++){
+    var t=tokens[i].replace(/[^A-Za-z0-9-]/g,"");
+    for(var b=0;b<KNOWN_BRANDS.length;b++){
+      if(t.toLowerCase()===KNOWN_BRANDS[b].toLowerCase()){brand=KNOWN_BRANDS[b];bi=i;break;}
+    }
+    if(brand)break;
+  }
+  var rest=tokens.slice();
+  if(bi>=0){brand=tokens[bi];rest.splice(bi,1);} // keep original casing of brand token
+  // model = first meaningful tokens after dropping generic words, max 3 tokens / ~16 chars
+  var model=[];
+  for(var j=0;j<rest.length;j++){
+    var w=rest[j];
+    if(GENERIC.test(w.replace(/[^A-Za-z0-9-]/g,""))) { if(model.length) break; else continue; }
+    model.push(w);
+    if(model.length>=2 || model.join(" ").length>=14) break;
+  }
+  var modelStr=model.join(" ").trim();
+  if(!modelStr){ // fallback: brandless → first 2 tokens
+    modelStr=tokens.slice(0,2).join(" ");
+    if(!brand && tokens.length){brand=tokens[0];modelStr=tokens.slice(1,3).join(" ")||tokens[0];}
+  }
+  if(!brand && tokens.length>1){brand=tokens[0];}
+  return {brand:String(brand||"").toUpperCase(), model:modelStr||raw};
+}
+
+window.__imgStatus="none";window.__fallbackSrc="";
+window.__imgFail=function(el){window.__imgStatus="fallback";
+  if(window.__fallbackSrc && el.src.indexOf(window.__fallbackSrc)===-1){
+    el.onerror=function(){window.__imgStatus="none";this.outerHTML='<div class="noimg">foto e produktit</div>';};
+    el.src=window.__fallbackSrc;
+  } else {window.__imgStatus="none";el.outerHTML='<div class="noimg">foto e produktit</div>';}
+};
+
+function wordmark(brand){
+  const host=(brand.url||"gjirafa50.com").replace(/^https?:\/\//,"");
+  return host.replace(/(50|Mall)/i,'<span class="a">$1</span>');
+}
+
+/* pick a theme by category if not given */
+function themeFor(product){
+  if(product.theme) return product.theme;
+  var cat=String(product.category||product.label||"").toLowerCase();
+  if(/gaming|gamer|konzol|console|playstation|xbox/.test(cat)) return "neon";
+  if(/laptop|kompjuter|monitor|telefon|smartphone|tablet|tv|audio|foto|elektronik|teknologj|gadget|aksesor/.test(cat)) return "dark";
+  if(/mobilje|shtëpi|shtepi|kuzhin|home|furnitur|dekor/.test(cat)) return "warm";
+  if(/parfum|kozmetik|bukuri|fashion|veshje|modë|mode|beauty/.test(cat)) return "fashion";
+  return "studio";
+}
+
+window.renderCreative=function(format,product,brand){
+  brand=brand||{};
+  const c=document.getElementById("canvas");
+  const theme=themeFor(product);
+  c.className=format+" theme-"+theme;
+  c.style.setProperty("--accent",product.accent||brand.accent||"#E4002B");
+
+  const sale=splitPrice(product.sale_price), reg=splitPrice(product.regular_price);
+  const onSale = reg.num && parseFloat(String(reg.num).replace(",","."))>parseFloat(String(sale.num).replace(",","."));
+  const discNum=String(product.discount_percentage||"").replace(/[^\d]/g,"");
+  const cta=(product.cta_text||brand.cta_text||"Bli tani");
+  const label=esc((product.label||product.category||"Ofertë")).toUpperCase();
+  const bg=product.background_image||brand.background||"";
+  const imgSrc=product.product_image||"";
+
+  const bm=deriveBrandModel(product.product_name, product.brand_name, product.model);
+  // show full name as sub only when it adds info beyond brand+model
+  const heroText=(bm.brand?bm.brand+" ":"")+bm.model;
+  const fullName=String(product.product_name||"").trim();
+  const showSub = product.subtitle || (fullName && fullName.toLowerCase()!==heroText.toLowerCase().trim());
+
+  window.__fallbackSrc=brand.fallbackImage||"";
+  window.__imgStatus=imgSrc?"pending":(window.__fallbackSrc?"fallback":"none");
+  const photo=imgSrc
+    ? `<img src="${esc(imgSrc)}" alt="" referrerpolicy="no-referrer" onload="window.__imgStatus='ok'" onerror="window.__imgFail(this)">`
+    : (window.__fallbackSrc?`<img src="${esc(window.__fallbackSrc)}" alt="" onerror="window.__imgFail(this)">`:`<div class="noimg">foto e produktit</div>`);
+  const pill = (onSale && discNum) ? `<span class="pill">-${esc(discNum)}%</span>` : "";
+
+  c.innerHTML=`
+    ${bg?`<img class="bgimg" src="${esc(bg)}" alt=""><div class="bgscrim"></div>`:`<div class="bg2"></div>`}
+    <div class="topbar"><div class="label"><span class="sq"></span>${label}</div>
+      <div class="wordmark">${wordmark(brand)}</div></div>
+    <div class="hero">
+      ${bm.brand?`<div class="eyebrow">${esc(bm.brand)}</div>`:""}
+      <div class="model">${esc(bm.model)}</div>
+    </div>
+    <div class="photo">${photo}</div>
+    <div class="info">
+      ${showSub?`<div class="sub">${esc(product.subtitle||fullName)}</div>`:""}
+      <div class="priceline">
+        ${onSale?`<span class="old">${esc(reg.num)} ${esc(reg.cur)}</span>`:""}
+        ${pill}
+      </div>
+      <div class="sale">${esc(sale.num)} ${esc(sale.cur)}</div>
+      <div class="cta">${esc(cta)}</div>
+    </div>`;
+  // auto-fit the big MODEL headline so long words never clip
+  var m=c.querySelector(".model");
+  if(m){var fz=parseFloat(getComputedStyle(m).fontSize),g=0;
+    while((m.scrollWidth>m.clientWidth+1||m.scrollHeight>m.clientHeight+1) && fz>40 && g<160){fz-=4;m.style.fontSize=fz+"px";g++;}}
+  return true;
+};
+
+(function(){const q=new URLSearchParams(location.search);if(q.has("demo")){
+  renderCreative(q.get("format")||"feed",{
+    category:q.get("cat")||"TV, Audio & Foto",product_name:q.get("name")||"Monitor Samsung Odyssey G5 34\"",
+    regular_price:"394.50€",sale_price:"279.50€",discount_percentage:"-29%",cta_text:"Blej tani",
+    theme:q.get("theme")||"", product_image:""
+  },{});
+}})();
+</script>
+</body>
+</html>

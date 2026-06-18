@@ -1,0 +1,14 @@
+{
+  "name": "gjirafa50-creative-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MVP creative engine: render Gjirafa50 Feed/Story/Reel images from HTML/CSS templates with Playwright.",
+  "type": "commonjs",
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "render": "node render.js"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}

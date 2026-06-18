@@ -1,0 +1,23 @@
+[
+  {
+    "at": "2026-06-08T12:25:41.495Z",
+    "op": "ig_container:request",
+    "endpoint": "/17890/media",
+    "params": {
+      "image_url": "https://example.com/approved/20260608121750-34b719/20260608121750-34b719_feed.png",
+      "caption": "HUB USB Unitek Y-2140\ntani 6.50€ në vend të 10.50€ (-38%)\nLidhja në bio. #Gjirafa50",
+      "access_token": "***_xyz"
+    }
+  },
+  {
+    "at": "2026-06-08T12:25:41.355Z",
+    "op": "fb_photo:request",
+    "endpoint": "/1234567890/photos",
+    "params": {
+      "url": "https://example.com/approved/20260608121750-34b719/20260608121750-34b719_feed.png",
+      "caption": "🔥 HUB USB Unitek Y-2140 — tani 6.50€ në vend të 10.50€ (-38%). Sasi e kufizuar, sa të zgjasin gjendjet. Bli tani: https://gjirafa50.com/hub-usb-unitek-y-2140-4xusb-20-mini-e-zeze",
+      "published": true,
+      "access_token": "***_xyz"
+    }
+  }
+]

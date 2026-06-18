@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gjirafa50 — Social Scheduler</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#0e1116;color:#e8ebef;font-family:Inter,"Segoe UI",Arial,sans-serif}
+  .nav{display:flex;align-items:center;gap:8px;padding:12px 22px;background:#11151c;border-bottom:1px solid #1f2630;position:sticky;top:0;z-index:5}
+  .nav .brand{font-weight:800;margin-right:14px}.brand span{color:#E4002B}
+  .nav a{color:#cdd5de;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:14px;border:1px solid #283341}
+  .nav a.active{background:#E4002B;border-color:#E4002B;color:#fff;font-weight:700}
+  .nav .pill{margin-left:auto;font-size:12px;color:#8b97a6}
+  main{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:420px 1fr;gap:22px}
+  @media(max-width:880px){main{grid-template-columns:1fr}}
+  .card{background:#141921;border:1px solid #222b35;border-radius:14px;padding:18px}
+  h2{font-size:16px;margin:0 0 12px}
+  label{display:block;font-size:12px;color:#9aa6b2;margin:10px 0 4px}
+  input,textarea,select{width:100%;background:#161b23;color:#e8ebef;border:1px solid #28303b;border-radius:8px;padding:9px 11px;font-size:13px;font-family:inherit}
+  .row{display:flex;gap:8px}.row>*{flex:1}
+  .btn{background:#E4002B;color:#fff;border:none;border-radius:9px;padding:11px 16px;font-weight:700;cursor:pointer;font-size:14px}
+  .btn.ghost{background:#1b222c;color:#cdd5de;border:1px solid #2b343f;font-weight:600}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .drop{border:2px dashed #2b3845;border-radius:12px;padding:18px;text-align:center;color:#8b97a6;cursor:pointer}
+  .prev{width:100%;border-radius:10px;margin-top:10px;border:1px solid #222b35;display:none}
+  .hint{color:#8b97a6;font-size:12px;margin-top:8px}
+  .seg{display:flex;gap:6px}.seg button{flex:1;background:#161b23;border:1px solid #28303b;color:#cdd5de;border-radius:8px;padding:8px;cursor:pointer;font-size:13px}
+  .seg button.on{background:#E4002B;border-color:#E4002B;color:#fff;font-weight:700}
+  .post{background:#141921;border:1px solid #222b35;border-radius:12px;padding:12px;display:flex;gap:12px;margin-bottom:10px}
+  .post img{width:90px;height:90px;object-fit:cover;border-radius:8px;background:#222}
+  .post .body{flex:1;min-width:0}
+  .post .cap{font-size:12px;color:#aeb8c4;max-height:40px;overflow:hidden}
+  .status{display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase}
+  .s-draft{background:#33404e;color:#cdd5de}.s-scheduled{background:#1d4ed8;color:#fff}.s-publishing{background:#a16207;color:#fff}
+  .s-published{background:#15803d;color:#fff}.s-failed{background:#b91c1c;color:#fff}.s-cancelled{background:#3f3f46;color:#cbd5e1}
+  .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .acts button{font-size:12px;padding:6px 10px;border-radius:7px;border:1px solid #2b343f;background:#1b222c;color:#cdd5de;cursor:pointer}
+  .tabs{display:flex;gap:8px;margin-bottom:12px}
+  .tabs button{background:#161b23;border:1px solid #28303b;color:#cdd5de;border-radius:8px;padding:8px 14px;cursor:pointer}
+  .tabs button.on{background:#E4002B;border-color:#E4002B;color:#fff;font-weight:700}
+  pre{background:#0b0f15;border:1px solid #222b35;border-radius:8px;padding:12px;font-size:11px;overflow:auto;max-height:340px;white-space:pre-wrap}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:20}
+  .modal.open{display:flex}
+  .sheet{background:#11151c;border:1px solid #222b35;border-radius:14px;max-width:680px;width:92%;max-height:86vh;overflow:auto;padding:20px}
+  .warn{color:#fca5a5;font-size:12px}.ok{color:#86efac;font-size:12px}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="brand">Gjirafa<span>50</span></div>
+  <a href="/">Product Studio</a>
+  <a href="/social-scheduler" class="active">Social Scheduler</a>
+  <span class="pill" id="cfgpill">…</span>
+</div>
+<main>
+  <div class="card">
+    <h2>1) Krijo postim</h2>
+    <div class="drop" id="drop">Kliko ose tërhiq një foto (jpg, png, webp)<input id="file" type="file" accept="image/jpeg,image/png,image/webp" style="display:none"></div>
+    <img class="prev" id="prev" alt="">
+    <div class="hint" id="upstat"></div>
+
+    <label>Platformat</label>
+    <div class="seg" id="plat">
+      <button data-p="facebook">Facebook</button>
+      <button data-p="instagram">Instagram</button>
+      <button data-p="both" class="on">Të dyja</button>
+    </div>
+
+    <div class="row"><div><label>Emri i produktit (opsional)</label><input id="f_name"></div><div><label>Çmimi (opsional)</label><input id="f_price" placeholder="p.sh. 199.50€"></div></div>
+    <div class="row"><div><label>Zbritja (opsional)</label><input id="f_disc" placeholder="-20%"></div><div><label>Fushata (opsional)</label><input id="f_camp"></div></div>
+    <label>Linku (opsional)</label><input id="f_link" placeholder="gjirafa50.com/...">
+    <label>Shënime (opsional)</label><input id="f_notes">
+    <button class="btn" id="gen" style="width:100%;margin-top:12px">✨ Gjenero tekstet (shqip)</button>
+
+    <label>Teksti Facebook</label><textarea id="cFb" rows="4"></textarea>
+    <label>Teksti Instagram</label><textarea id="cIg" rows="4"></textarea>
+    <label>Hashtag-e</label><input id="cTags">
+    <label>Përshkrim i shkurtër (meta)</label><input id="cDesc">
+
+    <label>Data &amp; ora e publikimit</label>
+    <input id="when" type="datetime-local">
+    <div class="acts" style="margin-top:12px">
+      <button class="btn ghost" id="saveDraft">Ruaj draft</button>
+      <button class="btn ghost" id="dry">Dry-run</button>
+      <button class="btn" id="schedule">📅 Planifiko</button>
+    </div>
+    <div class="hint" id="formstat"></div>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="on" data-tab="list">Postimet</button>
+      <button data-tab="cal">Kalendar</button>
+      <button data-tab="hist">Historiku</button>
+      <button class="ghost" id="preflightBtn" style="margin-left:auto;border-radius:8px;padding:8px 14px">Kontrollo Meta</button>
+    </div>
+    <div id="listWrap"></div>
+    <div id="calWrap" style="display:none"></div>
+    <div id="histWrap" style="display:none"></div>
+  </div>
+</main>
+
+<div class="modal" id="modal"><div class="sheet"><div id="modalBody"></div><div style="margin-top:14px;text-align:right"><button class="btn ghost" id="modalNo">Mbyll</button> <button class="btn" id="modalYes" style="display:none">Po, vazhdo</button></div></div></div>
+<script src="/social-scheduler/app.js"></script>
+</body>
+</html>

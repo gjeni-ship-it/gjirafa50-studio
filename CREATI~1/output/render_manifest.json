@@ -1,0 +1,92 @@
+[
+  {
+    "product": "Bateri Philips AA LR6, alkaline, paketim 10 copë",
+    "slot": "Product of the Day",
+    "format": "feed",
+    "file": "output/256383_feed.png"
+  },
+  {
+    "product": "Bateri Philips AA LR6, alkaline, paketim 10 copë",
+    "slot": "Product of the Day",
+    "format": "story",
+    "file": "output/256383_story.png"
+  },
+  {
+    "product": "Bateri Philips AA LR6, alkaline, paketim 10 copë",
+    "slot": "Product of the Day",
+    "format": "reel",
+    "file": "output/256383_reel.png"
+  },
+  {
+    "product": "Memorie RAM MicroMemory MMD2605/8GB, 8GB DDR3, 1600MHz PC3-12800",
+    "slot": "Happy Hour 1",
+    "format": "feed",
+    "file": "output/296457_feed.png"
+  },
+  {
+    "product": "Memorie RAM MicroMemory MMD2605/8GB, 8GB DDR3, 1600MHz PC3-12800",
+    "slot": "Happy Hour 1",
+    "format": "story",
+    "file": "output/296457_story.png"
+  },
+  {
+    "product": "Memorie RAM MicroMemory MMD2605/8GB, 8GB DDR3, 1600MHz PC3-12800",
+    "slot": "Happy Hour 1",
+    "format": "reel",
+    "file": "output/296457_reel.png"
+  },
+  {
+    "product": "Kuti eksternale Hikvision MDS1, për M.2 SATA NVMe, për kamera rrjeti, gri",
+    "slot": "Happy Hour 2",
+    "format": "feed",
+    "file": "output/268184_feed.png"
+  },
+  {
+    "product": "Kuti eksternale Hikvision MDS1, për M.2 SATA NVMe, për kamera rrjeti, gri",
+    "slot": "Happy Hour 2",
+    "format": "story",
+    "file": "output/268184_story.png"
+  },
+  {
+    "product": "Kuti eksternale Hikvision MDS1, për M.2 SATA NVMe, për kamera rrjeti, gri",
+    "slot": "Happy Hour 2",
+    "format": "reel",
+    "file": "output/268184_reel.png"
+  },
+  {
+    "product": "Vegël zhveshëse kabllosh Equip 129411, funksion prerës, mekanizëm ratchet",
+    "slot": "Happy Hour 3",
+    "format": "feed",
+    "file": "output/274542_feed.png"
+  },
+  {
+    "product": "Vegël zhveshëse kabllosh Equip 129411, funksion prerës, mekanizëm ratchet",
+    "slot": "Happy Hour 3",
+    "format": "story",
+    "file": "output/274542_story.png"
+  },
+  {
+    "product": "Vegël zhveshëse kabllosh Equip 129411, funksion prerës, mekanizëm ratchet",
+    "slot": "Happy Hour 3",
+    "format": "reel",
+    "file": "output/274542_reel.png"
+  },
+  {
+    "product": "Kabinet muror rack Eprado 19\", 6U, metalik, gri",
+    "slot": "Happy Hour 4",
+    "format": "feed",
+    "file": "output/282846_feed.png"
+  },
+  {
+    "product": "Kabinet muror rack Eprado 19\", 6U, metalik, gri",
+    "slot": "Happy Hour 4",
+    "format": "story",
+    "file": "output/282846_story.png"
+  },
+  {
+    "product": "Kabinet muror rack Eprado 19\", 6U, metalik, gri",
+    "slot": "Happy Hour 4",
+    "format": "reel",
+    "file": "output/282846_reel.png"
+  }
+]

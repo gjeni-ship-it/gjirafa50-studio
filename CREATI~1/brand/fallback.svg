@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#ffffff"/>
+  <g fill="none" stroke="#c7ccd3" stroke-width="10">
+    <rect x="170" y="190" width="260" height="200" rx="16"/>
+    <circle cx="240" cy="255" r="22"/>
+    <path d="M185 360 L270 290 L330 345 L380 305 L415 360" stroke-linejoin="round"/>
+  </g>
+  <text x="300" y="450" font-family="Arial" font-size="34" font-weight="700" fill="#9aa3ac" text-anchor="middle">Gjirafa50</text>
+  <text x="300" y="492" font-family="Arial" font-size="26" fill="#b6bcc4" text-anchor="middle">foto e produktit</text>
+</svg>

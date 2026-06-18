@@ -1,0 +1,23 @@
+[
+  {
+    "attempt_id": "1780921541355-b2cbc3",
+    "record_id": "20260608121750-34b719",
+    "product_id": 297440,
+    "product_name": "HUB USB Unitek Y-2140, 4xUSB 2.0 mini, e zezë",
+    "platforms": "both",
+    "started_at": "2026-06-08T12:25:41.355Z",
+    "by": "gjeni@gjirafa.com",
+    "results": {
+      "facebook": {
+        "ok": false,
+        "error": "Invalid OAuth access token data."
+      },
+      "instagram": {
+        "ok": false,
+        "error": "Invalid OAuth access token data."
+      }
+    },
+    "finished_at": "2026-06-08T12:25:41.640Z",
+    "status": "failed"
+  }
+]

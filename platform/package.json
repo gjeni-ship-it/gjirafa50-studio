@@ -1,0 +1,18 @@
+{
+  "name": "gjirafa50-social-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Gjirafa50 product-based social publishing platform \u2014 Product Browser (Step 1 of the platform).",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "verify": "node scripts/verify-public-image.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "optionalDependencies": {
+    "mssql": "^11.0.1"
+  }
+}
